@@ -1,0 +1,61 @@
+#include<unordered_map>
+#include<queue>
+#include<list>
+
+
+bool isCyclicBfs(unordered_map<int,list<int> > &adj , unordered_map<int,bool> &visited , int node ){
+    
+    unordered_map<int,int> parent;
+    visited[node] = 1;
+    parent[node] = -1;
+    queue<int>q;
+    q.push(node);
+
+    
+
+    while(!q.empty()){
+        int frontNode = q.front();
+        q.pop();
+
+        for(auto neighbour: adj[frontNode]){
+           if(visited[neighbour] == true && neighbour != parent[frontNode]){
+               return true;
+           }
+
+           else if(!visited[neighbour]){
+               q.push(neighbour);
+               visited[neighbour] = 1;
+               parent[neighbour] = frontNode;
+           }
+        }
+    }
+    return false;
+}
+
+
+string cycleDetection (vector<vector<int>>& edges, int n, int m)
+{
+    //Create Adjacency List =>
+    unordered_map<int,list<int> >adj;
+    for( int i =0;i<m;i++){
+        int u = edges[i][0];
+        int v = edges[i][1];
+   
+        adj[u].push_back(v);        
+        adj[v].push_back(u);
+    }
+
+    // To handle Disconnected components =>
+    unordered_map<int,bool> visited;
+    for(int i =0;i<n; i++){
+        if(!visited[i]){
+            bool ans = isCyclicBfs(adj , visited , i);
+            if(ans == 1){
+                return "Yes";
+            }
+        }
+    }
+
+    return "No";
+
+}
