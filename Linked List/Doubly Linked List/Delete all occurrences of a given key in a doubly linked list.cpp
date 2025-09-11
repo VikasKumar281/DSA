@@ -16,9 +16,7 @@ class Solution {
        while(temp!=NULL && temp->data == x){
            Node* dummy = temp;
            temp = temp ->next;
-           if(temp){
-               temp->prev = NULL;
-           }
+           temp->prev = NULL;
            delete dummy;
            *head_ref = temp;
        }
