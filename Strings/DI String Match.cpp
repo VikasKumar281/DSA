@@ -5,7 +5,7 @@ public:
         vector<int> ans;
 
          int low = 0 , high = n;
-        for(int i = 0; i<=n;i++){
+        for(int i = 0; i<n;i++){
             if(s[i] == 'I'){
               ans.push_back(low++);
             }
@@ -13,6 +13,8 @@ public:
                 ans.push_back(high--);
             }
         }
+
+        ans.push_back(low);
 
         return ans;
     }
