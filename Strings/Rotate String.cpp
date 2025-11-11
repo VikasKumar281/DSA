@@ -1,6 +1,27 @@
 class Solution {
 public:
     bool rotateString(string s, string goal) {
+        if(s.size() != goal.size()){
+            return false;
+        }
+
+        string temp = s+s;
+        if(temp.find(goal) != string::npos){
+            return true;
+        }
+        // string::npos is a built-in constant in C++ that means “not found”
+
+        return false;
+    }
+};
+// Time: O(n)
+// Space: O(1)
+
+
+
+class Solution {
+public:
+    bool rotateString(string s, string goal) {
         int n  = s.size();
         int m = goal.size();
 
