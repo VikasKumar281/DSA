@@ -20,6 +20,8 @@ class Solution {
           sortStack(st);
           insert(st,temp);
       }
-        
+      else{
+          return;
+      }
     }
 };
