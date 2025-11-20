@@ -1,24 +1,29 @@
 class Solution {
   public:
-    void insertAtBottom(stack<int> &st, int val) {
-        if (st.empty()) {
-            st.push(val);
+    void insertAtBottom(stack<int> &st , int temp){
+        if(st.empty()){
+            st.push(temp);
             return;
         }
-        int topVal = st.top();
+        
+        int val = st.top();
         st.pop();
-        insertAtBottom(st, val);
-        st.push(topVal);
+        
+        insertAtBottom(st,temp);
+        st.push(val);
+        
     }
-
     void reverseStack(stack<int> &st) {
-        if (st.empty()) return;
-
-        int topVal = st.top();
-        st.pop();
-
-        reverseStack(st);
-
-        insertAtBottom(st, topVal);
+        if(!st.empty()){
+            int temp = st.top();
+            st.pop();
+            
+            reverseStack(st);
+            
+            insertAtBottom(st,temp);
+        }
+        else{
+            return;
+        }
     }
 };
