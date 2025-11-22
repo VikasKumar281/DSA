@@ -1,3 +1,27 @@
+// TABULATION METHOD -------------------------------->
+class Solution { 
+public:
+    int solve(int n){
+      if(n <= 1) return n;  
+      int prev2 = 0;
+      int prev = 1;
+      int curr;
+
+      for(int i =2;i<=n;i++){
+        curr = prev2 + prev;
+        prev2 = prev;
+        prev = curr;
+      }
+    
+      return prev;
+    }
+    int fib(int n) {
+      return solve(n);
+    }
+};
+
+
+// MEMOIZATION METHOD -------------------------------------->
 class Solution { 
 public:
     int solve(vector<int> &dp,int n){
