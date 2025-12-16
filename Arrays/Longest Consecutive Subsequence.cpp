@@ -2,6 +2,9 @@ class Solution {
   public:
     int longestConsecutive(vector<int>& arr) {
         int n = arr.size();
+        if(n == 0){
+          return 0;
+        }
         sort(arr.begin(),arr.end());
         
         int count = 1;
