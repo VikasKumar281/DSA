@@ -15,6 +15,41 @@ public:
             }
         }
          
+        int p =0 , q=0; 
+        for(int i =0;i<n;i++){
+            if(i%2 == 0){
+                nums[i] = pos[p++];
+            }
+            else{
+                nums[i] = neg[q++];
+            }
+        }
+        return nums;
+    }
+};
+//T.C. = O(N)
+//S.C. = O(N)
+
+
+
+
+class Solution {
+public:
+    vector<int> rearrangeArray(vector<int>& nums) {
+        vector<int>pos;
+        vector<int>neg;
+        int n = nums.size();
+        vector<int> ans;
+
+        for(int i =0;i<n;i++){
+            if(nums[i] >= 0){
+                pos.push_back(nums[i]);
+            }
+            else{
+                neg.push_back(nums[i]);
+            }
+        }
+         
         int i =0 , j=0; 
         int n1 = pos.size() , n2 = neg.size();
 
