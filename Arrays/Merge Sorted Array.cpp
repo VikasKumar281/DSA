@@ -1,6 +1,23 @@
 class Solution {
 public:
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int j =0;
+        while(j<n){
+            nums1[m+j] = nums2[j];
+            j++;
+        }
+        sort(nums1.begin(), nums1.end());
+    }
+};
+//Time Complexity = O(n) + O((m+n)log(m+n)) = O((m+n)log(m+n))
+// Space Complexity = O(1)
+
+
+
+
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
     
         vector<int> ans;
         int i =0 , j = 0;
