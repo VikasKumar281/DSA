@@ -21,3 +21,25 @@ public:
       return max_area;
     }
 };
+
+
+class Solution {
+  public:
+    int maxWater(vector<int> &arr) {
+        int n = arr.size();
+        int l = 0, r = n - 1;
+        long long ans = 0;
+
+        while(l < r){
+            long long area = (long long)(r - l) * min(arr[l], arr[r]);
+            ans = max(ans, area);
+            if(arr[l] < arr[r]){
+                l++;
+            }
+            else{
+                r--;
+            }
+        }
+        return ans;
+    }
+};
