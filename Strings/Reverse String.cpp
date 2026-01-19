@@ -1,4 +1,24 @@
 class Solution {
+  public:
+    string reverseString(string& s) {
+        int n= s.size();
+        string s2 = "";
+        
+        int right = n-1;
+        while(right>=0){
+            s2.push_back(s[right]);
+            right--;
+        }
+        
+        return s2;
+    }
+};
+// Time Complexity = O(n)
+// Space Complexity = O(n)
+
+
+
+class Solution {
 public:
     void reverseString(vector<char>& s) {
         int n = s.size();
@@ -12,6 +32,8 @@ public:
  
     }
 };
+// Time Complexity = O(n)
+// Space Complexity = O(1)
 
 
 
@@ -30,3 +52,5 @@ public:
  
     }
 };
+// Time Complexity = O(n)
+// Space Complexity = O(n)
