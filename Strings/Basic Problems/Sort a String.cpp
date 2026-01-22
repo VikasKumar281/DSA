@@ -1,3 +1,27 @@
+// Counting Sort (for lowercase letters ONLY) ---------------------------------------------------------->
+string sort(string s) {
+    int freq[26] = {0};
+    
+    for(char ch:s){
+        freq[ch - 'a']++;
+    }
+    
+    int idx = 0;
+    for(int i = 0;i<26;i++){
+        while(freq[i]--){
+            s[idx++] = char(i + 'a');
+        }
+    }
+    
+    return s;
+}
+// Time: O(n)
+// Space: O(1)
+
+
+
+
+// SORT USING SELECTION SORT --------------------------------------------------------------------->
 string sort(string s) {
     int n = s.size();
     
