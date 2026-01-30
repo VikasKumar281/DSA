@@ -1,3 +1,28 @@
+// TABULATION APPROACH -------------------------------------------------------------------------------------------------------------->
+class Solution {
+  public:
+    int lis(vector<int>& arr) {
+       int n = arr.size();
+       vector<vector<int>> dp(n+1, vector<int>(n+1 , 0));
+       
+       for(int index = n-1; index >=0;index--){
+           for(int prev_index = index - 1;prev_index >= -1;prev_index--){
+                int skip = 0 + dp[index+1][prev_index+1];
+                int take = INT_MIN;
+                if(prev_index == -1 || arr[prev_index] < arr[index]){
+                    take = 1 + dp[index+1][index+1];
+                }
+                
+                dp[index][prev_index+1] = max(take , skip); 
+           }
+       }
+       return dp[0][-1+1];
+    }
+};
+// Time = O(n²)
+// Space = O(n²)
+
+
 //MEMOISATION APPROACH -------------------------------------------------------------------------------------------------->
 class Solution {
 public:
@@ -24,5 +49,5 @@ public:
         return helper(0,-1,nums,size , dp);
     }
 };
-// Time	O(n²)
-// Space	O(n²)
+// Time = O(n²)
+// Space = O(n²)
