@@ -27,7 +27,7 @@ class Solution {
         if(k > arr.size()){
             return -1;
         }
-        int low = *min_element(arr.begin(),arr.end());
+        int low = *max_element(arr.begin(),arr.end());
         int high = accumulate(arr.begin(),arr.end(),0);
         
         int res = 0;
