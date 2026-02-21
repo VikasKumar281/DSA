@@ -1,5 +1,39 @@
 class Solution {
 public:
+    int maxFrequency(vector<int>& nums, int k) {
+        int n = nums.size();
+
+        sort(nums.begin(),nums.end());
+        int result = 0;
+
+        long long currSum = 0;
+        int left =0;
+
+        for(int right = 0;right<n;right++){
+            long long target = nums[right];
+            currSum += nums[right];
+            // long long windowSum = (right - left + 1) * target; 
+            // int operations = windowSum - currSum;
+
+            while( (target * (right - left + 1) - currSum) > k){
+                currSum -= nums[left];
+                left++;
+            }
+
+            result = max(result, right - left + 1); 
+        }
+
+        return result;
+    }
+};
+
+
+
+
+
+// USING BINARY SEARCH ---------------------------------------------------------------------------------------------------->
+class Solution {
+public:
     int binSearch(int target_idx, int k , vector<int> &nums, vector<long long> &prefixSum){
         int target = nums[target_idx];
 
