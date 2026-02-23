@@ -1,5 +1,25 @@
 class Solution {
 public:
+    bool hasAllCodes(string s, int k) {
+        // totalcodes = 2 ^ k
+        int n = s.size();
+
+        unordered_set<string> st;
+
+        for(int i = k;i<=n;i++){
+           st.insert(s.substr(i-k,k));
+        }
+
+        return st.size() == (1 << k);
+    }
+};
+
+
+
+
+
+class Solution {
+public:
     int pow(int a , int k){
         int res = 1;
         for(int i =0;i<k;i++){
