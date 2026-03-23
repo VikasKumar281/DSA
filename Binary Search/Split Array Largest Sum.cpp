@@ -1,5 +1,64 @@
 class Solution {
 public:
+    bool splitPossible(vector<int> &nums, int barrier, int k){
+        int n = nums.size();
+        
+        int part = 1, sum = 0;
+
+        for(int i =0;i<n; i++){
+            if(nums[i] > barrier){
+                return false;
+            }
+            if(sum + nums[i] > barrier){
+               part++;
+               sum = nums[i];
+            }
+            else{
+                sum += nums[i];
+            }
+        }
+
+        if(part > k){
+            return false;
+        }
+
+        return true;
+    }
+    int splitArray(vector<int>& nums, int k) {
+      int n = nums.size();
+
+      int res = -1;
+      
+      if(k > n){
+        return res;
+      }
+
+      int low = *max_element(nums.begin(), nums.end());
+      int high = accumulate(nums.begin(), nums.end(), 0);
+
+      while(low <= high){
+        int mid = low + (high - low)/2;
+
+        if(splitPossible(nums, mid, k)){
+            res = mid;
+            high = mid - 1;
+        }
+        else{
+            low = mid + 1;
+        }
+      }
+
+      return res;
+    }
+};
+
+
+
+
+
+
+class Solution {
+public:
     bool isSplitPossible(vector<int> &nums,int k , int mid){
         int part = 1;
         int sum = 0;
