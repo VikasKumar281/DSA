@@ -22,4 +22,27 @@ public:
     }
 };
 //T.C. = O(N)
-//S.C. = O(N)
+//S.C. = O(1)
+
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        int n = numbers.size();
+        int l = 0;
+        int r = n-1;
+
+        for(int i =0;i<n;i++){
+            for(int j = i+1;j<n;j++){
+                int sum = numbers[i] + numbers[j];
+                if(sum == target){
+                    return {i+1, j+1};
+                }
+            }
+        }
+
+        return {};
+    }
+};
+//T.C. = O(N^2)
+//S.C. = O(1)
