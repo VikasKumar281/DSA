@@ -1,6 +1,33 @@
 class Solution {
 public:
     bool judgeCircle(string moves) {
+        int x = 0, y = 0;
+
+        for(char ch : moves) {
+            if(ch == 'U'){
+                y++;
+            }
+            else if(ch == 'D'){
+                y--;
+            }
+            else if(ch == 'L'){
+                x--;
+            }
+            else if(ch == 'R'){
+                x++;
+            }
+        }
+
+        return (x == 0 && y == 0);
+    }
+};
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+
+class Solution {
+public:
+    bool judgeCircle(string moves) {
         int count1 = 0;
         int count2 = 0;
         
