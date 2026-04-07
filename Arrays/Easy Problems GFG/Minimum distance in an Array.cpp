@@ -9,7 +9,7 @@ class Solution {
             if(arr[i] == x){
                 idx1 = i;
             }
-            else if(arr[i] == y){
+            if(arr[i] == y){
                 idx2 = i;
             }
             
