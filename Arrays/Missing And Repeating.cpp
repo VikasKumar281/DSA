@@ -1,4 +1,31 @@
 class Solution {
+public:
+    vector<int> findTwoElement(vector<int>& arr) {
+        int n = arr.size();
+        int rept = -1, mis = -1;
+
+        vector<int> freq(n + 1, 0);
+
+        for(int i = 0; i < n; i++) {
+            freq[arr[i]]++;
+        }
+
+        for(int i = 1; i <= n; i++) {
+            if(freq[i] == 0) {
+                mis = i;
+            }
+            else if(freq[i] == 2) {
+                rept = i;
+            }
+        }
+
+        return {rept, mis};
+    }
+};
+
+
+
+class Solution {
   public:
     vector<int> findTwoElement(vector<int>& arr) {
         int n = arr.size();
