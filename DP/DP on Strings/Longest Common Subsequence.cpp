@@ -1,10 +1,13 @@
+// Approach => Memoization + Recursion --------------------------------------------------->
+// T.C. : O(n1 * n2)
+// S.C. : O(n1 * n2)
 class Solution {
 public:
     int solve(int i , int j, string &text1, string &text2, vector<vector<int>> &dp){
         int n1 = text1.size();
         int n2 = text2.size();
         
-        if(i == n1 || j == n2){
+        if(i >= n1 || j >= n2){
             return 0;
         }
 
