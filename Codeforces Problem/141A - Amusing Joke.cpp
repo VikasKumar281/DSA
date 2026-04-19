@@ -1,19 +1,22 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 class Solution {
 public:
     void solve() {
         string a, b, c;
-        cin >>a>>b>>c;
+        cin >> a >> b >> c;
 
-        vector<int>freq(26, 0);
+        vector<int> freq(26, 0);
 
-        for(char ch :a){
+        for(char ch:a){
             freq[ch -'A']++;
         }
-        for(char ch : b){
-            freq[ch-'A']++;
+        for(char ch :b){
+            freq[ch -'A']++;
         }
-        for(char ch:c){
-            freq[ch-'A']--;
+        for(char ch :c){
+            freq[ch -'A']--;
         }
 
         for(int i = 0; i < 26; i++){
@@ -26,3 +29,8 @@ public:
         cout << "YES";
     }
 };
+
+int main(){
+    Solution s;
+    s.solve();
+}
