@@ -1,4 +1,36 @@
 class Solution {
+public:
+    bool isVowel(char c){
+        c = tolower(c);
+        return c=='a'||c=='e'||c=='i'||c=='o'||c=='u';
+    }
+
+    string reverseVowels(string s) {
+        vector<char> arr;
+
+        for(char c : s){
+            if(isVowel(c)){
+                arr.push_back(c);
+            }
+        }
+
+        int m = arr.size();
+
+        for(int i = 0; i < s.size(); i++){
+            if(m > 0 && isVowel(s[i])){
+                s[i] = arr[m-1];
+                m--;
+            }
+        }
+
+        return s;
+    }
+};
+
+
+
+
+class Solution {
 private:
     bool isVowel(char s){
         s = tolower(s);
