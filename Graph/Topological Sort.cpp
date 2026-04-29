@@ -1,4 +1,60 @@
-//Approach => Using DFS
+//Approach => Using BFS ----------------------------------------------------------------------------------------------------------->
+// Time => O(V + E)
+// Space => O(V + E)
+class Solution {
+  public:
+    vector<int> topoSort(int N, vector<vector<int>>& edges) {
+      vector<vector<int>> adj(N);
+      
+      for(auto &e : edges){
+          int u = e[0];
+          int v = e[1];
+          
+          adj[u].push_back(v);
+      }
+      
+      vector<int> inDegree(N, 0);
+      queue<int> que;
+      
+      for(int u = 0;u<N;u++){
+          for(int &v : adj[u]){
+              inDegree[v]++;
+          }
+      }
+      
+      for(int i=0;i<N;i++){
+          if(inDegree[i] == 0){
+              que.push(i);
+          }
+      }
+      
+      vector<int> result;
+      while(!que.empty()){
+          int u = que.front();
+          result.push_back(u);
+          que.pop();
+          
+          for(int &v : adj[u]){
+              inDegree[v]--;
+              
+              if(inDegree[v] == 0){
+                  que.push(v);
+              }
+          }
+      }
+      
+      return result;
+    }
+};
+
+
+
+
+
+
+
+
+//Approach => Using DFS ---------------------------------------------------------------------------------------------------------------------->
 // Time => O(V + E)
 // Space => O(V + E)
 class Solution {
@@ -46,7 +102,7 @@ class Solution {
 
 
 
-//Approach => Using DFS
+//Approach => Using DFS ------------------------------------------------------------------------------------------------------------------->
 // Time => O(V + E)
 // Space => O(V + E)
 class Solution {
