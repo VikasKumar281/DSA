@@ -1,3 +1,61 @@
+// Using BFS (Kahn's Algorithm) ------------------------------------------------------------------------------------------>
+class Solution {
+  public:
+    bool isPossible(int N, int P, vector<pair<int, int> >& prerequisites) {
+        vector<vector<int>> adj(N);
+        
+        for(auto &p : prerequisites){
+            int u = p.first;
+            int v = p.second;
+            
+            adj[u].push_back(v);
+        }
+        
+        vector<int> inDegree(N, false);
+        
+        queue<int> que;
+        for(int u =0;u<N;u++){
+            for(int &v: adj[u]){
+                inDegree[v]++;
+            }
+        }
+        int count = 0;
+        for(int i =0;i<N;i++){
+            if(inDegree[i] == 0){
+                que.push(i);
+                count++;
+            }
+        }
+        
+        while(!que.empty()){
+            int u = que.front();
+            que.pop();
+            
+            for(int &v: adj[u]){
+                inDegree[v]--;
+                
+                if(inDegree[v] == 0){
+                    que.push(v);
+                    count++;
+                }
+            }
+        }
+        
+        if(count == N){
+            return true;
+        }
+        
+        
+        return false;
+    }
+};
+
+
+
+
+
+
+
 // Using DFS ------------------------------------------------------------------------------------------>
 class Solution {
   public:
