@@ -1,3 +1,44 @@
+class Solution {
+public:
+    int V;
+    void BFS(vector<vector<int>>& isConnected, int u, vector<bool> &visited){
+        queue<int> que;
+
+        que.push(u);
+        visited[u] = true;
+
+        while(!que.empty()){
+            int curr = que.front();
+            que.pop();
+
+            for(int v = 0; v < V;v++){
+                if(!visited[v] && isConnected[u][v] == 1){
+                    BFS(isConnected, v, visited);
+                }
+            }
+        }
+
+    }
+    int findCircleNum(vector<vector<int>>& isConnected) {
+        V = isConnected.size();
+
+        int count = 0;
+        vector<bool> visited(V, false);
+        for(int i = 0;i < V;i++){
+            if(!visited[i]){
+                BFS(isConnected, i, visited);
+                count++;
+            }
+        }
+
+        return count;
+    }
+};
+
+
+
+
+
 //Approach => Using BFS ------------------------------------------------------------------------------------>
 class Solution {
 public:
