@@ -1,4 +1,32 @@
-//Recursion + Memoization ------------------------------------------------------------------------------------------------>
+//Bottom Up Approach ------------------------------------------------------------------------------------------------>
+// Time Complexity: O(n²)
+// Space Complexity: O(n)
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        int n = nums.size();
+        vector<bool> dp(n,0);
+        
+        dp[0] = true; // You are initially positioned at the array's first index.
+
+        for(int i =1;i<n;i++){
+           for(int j = i-1;j>=0;j--){
+             if(dp[j] == true && j + nums[j] >= i){
+                dp[i] = true; 
+                break;
+             }
+           }
+        } 
+        return dp[n-1];
+    }
+};
+
+
+
+
+
+
+//Recursion + Memoization (Top Down Approach)------------------------------------------------------------------------------------------------>
 // Time Complexity: O(n²)
 // Space Complexity: O(n)
 class Solution {
