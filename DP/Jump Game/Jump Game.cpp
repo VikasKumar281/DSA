@@ -1,4 +1,6 @@
 //Recursion + Memoization ------------------------------------------------------------------------------------------------>
+// Time Complexity: O(n²)
+// Space Complexity: O(n)
 class Solution {
 public:
     bool solve(vector<int> &nums, int n, int idx, vector<int> &dp){
