@@ -1,4 +1,32 @@
 class Solution {
+public:
+    int smallestSubstring(string s) {
+        int n = s.size();
+        int left = 0;
+        int ans = INT_MAX;
+
+        vector<int> freq(3, 0);
+
+        for(int right = 0; right < n; right++) {
+            freq[s[right] - '0']++;
+
+            while(freq[0] > 0 && freq[1] > 0 && freq[2] > 0) {
+                ans = min(ans, right - left + 1);
+
+                freq[s[left] - '0']--;
+                left++;
+            }
+        }
+
+        return ans == INT_MAX ? -1 : ans;
+    }
+};
+
+
+
+
+
+class Solution {
   public:
     int smallestSubstring(string s) {
         int n = s.size();
