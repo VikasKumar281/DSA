@@ -1,3 +1,6 @@
+// Simplified Approach 2 ----------------------------------------------------------------------->
+// T.C. = O(n^2) 
+// S.C. = O(1)
 class Solution {
 public:
     int countMajoritySubarrays(vector<int>& nums, int target) {
@@ -22,6 +25,33 @@ public:
 };
 
 
+// Approach 2 ----------------------------------------------------------------------->
+// T.C. = O(n^2) 
+// S.C. = O(1)
+class Solution {
+public:
+    int countMajoritySubarrays(vector<int>& nums, int target) {
+        int n = nums.size();
+        
+        int result = 0;
+        for(int i =0;i<n;i++){
+           int count = 0;
+           for(int j = i;j<n;j++){
+            count += (nums[j] == target) ? 1 : 0;
+            
+            if(count > (j-i+1)/2){
+                result++;
+            }
+           }
+        }
+
+        return result;
+    }
+};
+
+
+
+// Approach 1 ----------------------------------------------------------------------->
 // T.C. = O(n^3) 
 // S.C. = O(1)
 // Time Limit Exceeded -------------------------------------->
